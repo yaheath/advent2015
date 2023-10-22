@@ -34,7 +34,6 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use advent_lib::read::test_input;
 
     #[test]
     fn day01_test() {

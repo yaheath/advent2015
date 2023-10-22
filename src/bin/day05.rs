@@ -49,7 +49,7 @@ fn is_nice2(s: &str) -> bool {
             pairs.insert((c1, c2), idx);
         }
     }
-    return false;
+    false
 }
 
 fn part1(input: &Vec<String>) -> usize {
@@ -73,7 +73,6 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use advent_lib::read::test_input;
 
     #[test]
     fn day05_test() {
