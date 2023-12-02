@@ -128,7 +128,7 @@ mod tests {
     #[test]
     fn day23_test() {
         let input: Vec<Instruction> = test_input("inc a\njio a, +2\ntpl a\ninc a\n");
-        let mut vm = JanesVM::new(&input);
+        let mut vm = JanesVM::new(&input, 0);
         vm.run();
         assert_eq!(vm.shell.vm.get_reg('a'), 2);
         //assert_eq!(part2(&input), 0);

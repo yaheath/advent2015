@@ -3,11 +3,17 @@ use advent_lib::read::read_input;
 
 fn presents(housenum: usize) -> usize {
     let mut sum = 0;
-    let d = (housenum as f64).sqrt() as usize + 1;
+    let d = if housenum < 1000 {
+        housenum
+    } else {
+        (housenum as f64).sqrt() as usize + 1
+    };
     for i in 1..=d {
         if housenum % i == 0 {
             sum += i;
-            sum += housenum / i;
+            if housenum >= 1000 {
+                sum += housenum / i;
+            }
         }
     }
     sum * 10
@@ -58,6 +64,8 @@ mod tests {
     #[test]
     fn day20_test() {
         assert_eq!(presents(1), 10);
+        assert_eq!(presents(2), 30);
+        assert_eq!(presents(3), 40);
         assert_eq!(presents(6), 120);
         assert_eq!(presents(9), 130);
         assert_eq!(part1(150), 8);
