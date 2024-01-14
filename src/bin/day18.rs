@@ -27,13 +27,10 @@ fn step(grid: &mut Grid<Cell>, part2: bool) {
             let c = Coord2D::new(x, y);
             let onn = c.neighbors8().iter()
                 .filter(|cc| grid.x_bounds().contains(&cc.x) && grid.y_bounds().contains(&cc.y))
-                .filter(|cc| match grid.get(cc.x, cc.y) {
-                    Cell::On | Cell::OffNext => true,
-                    _ => false,
-                })
+                .filter(|cc| matches!(grid.get(cc.x, cc.y), Cell::On | Cell::OffNext))
                 .count();
             let new = match grid.get(x, y) {
-                Cell::On if onn >= 2 && onn <= 3 => Cell::On,
+                Cell::On if (2..=3).contains(&onn) => Cell::On,
                 Cell::On => Cell::OffNext,
                 Cell::Off if onn == 3 => Cell::OnNext,
                 Cell::Off => Cell::Off,

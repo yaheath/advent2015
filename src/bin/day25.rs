@@ -29,7 +29,7 @@ impl FromStr for Input {
 }
 
 fn get_n(row: usize, col: usize) -> usize {
-    (1 .. row + col - 1).into_iter().sum::<usize>() + col
+    (1 .. row + col - 1).sum::<usize>() + col
 }
 
 fn part1(input: &Input) -> usize {

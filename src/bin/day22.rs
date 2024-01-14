@@ -10,7 +10,7 @@ struct Enemy {
 }
 
 impl Enemy {
-    fn from_input(input: &Vec<String>) -> Self {
+    fn from_input(input: &[String]) -> Self {
         let mut hp = 0;
         let mut dmg = 0;
         for l in input {
@@ -158,13 +158,13 @@ fn battle(player: Player, enemy: Enemy, hardmode: bool) -> State {
     panic!();
 }
 
-fn part1(input: &Vec<String>) -> i32 {
+fn part1(input: &[String]) -> i32 {
     let enemy = Enemy::from_input(input);
     let result = battle(Player { hp: 50, mana: 500 }, enemy, false);
     result.mana_spent
 }
 
-fn part2(input: &Vec<String>) -> i32 {
+fn part2(input: &[String]) -> i32 {
     let enemy = Enemy::from_input(input);
     let result = battle(Player { hp: 50, mana: 500 }, enemy, true);
     result.mana_spent

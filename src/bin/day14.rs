@@ -31,15 +31,15 @@ fn dx_after(r: &Input, time: i64) -> i64 {
     ncycles * (r.duration * r.speed) + rem.min(r.duration) * r.speed
 }
 
-fn calc(input: &Vec<Input>, time: i64) -> i64 {
+fn calc(input: &[Input], time: i64) -> i64 {
     input.iter().map(|r| dx_after(r, time)).max().unwrap()
 }
 
-fn part1(input: &Vec<Input>) -> i64 {
+fn part1(input: &[Input]) -> i64 {
     calc(input, 2503)
 }
 
-fn calc2(input: &Vec<Input>, time: i64) -> i64 {
+fn calc2(input: &[Input], time: i64) -> i64 {
     let mut scores: HashMap<&String, i64> = HashMap::new();
     for t in 1..time {
         let by_score = input.iter()
@@ -56,7 +56,7 @@ fn calc2(input: &Vec<Input>, time: i64) -> i64 {
     scores.iter().map(|(_,&v)| v).max().unwrap()
 }
 
-fn part2(input: &Vec<Input>) -> i64 {
+fn part2(input: &[Input]) -> i64 {
     calc2(input, 2503)
 }
 

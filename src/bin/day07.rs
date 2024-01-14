@@ -21,7 +21,7 @@ impl FromStr for Input {
         let mut itr = s.split(" -> ");
         let lhs = itr.next().ok_or(())?;
         let tgt = itr.next().ok_or(())?;
-        let lhs = lhs.split(" ").collect::<Vec<_>>();
+        let lhs = lhs.split(' ').collect::<Vec<_>>();
         if lhs.len() == 1 {
             if let Ok(v) = lhs[0].parse::<u16>() {
                 Ok(Input::AssignImmed(v, tgt.into()))
@@ -61,7 +61,7 @@ fn process(input: &[Input]) -> HashMap<String, u16> {
     let mut wires:HashMap<String, u16> = HashMap::new();
     let mut remaining: Vec<Input> = input.to_owned();
 
-    while remaining.len() > 0 {
+    while !remaining.is_empty() {
         let rows = remaining.len();
         let mut next: Vec<Input> = Vec::new();
         for i in remaining.into_iter() {

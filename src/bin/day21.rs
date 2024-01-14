@@ -76,7 +76,7 @@ lazy_static! {
         .powerset()
         .filter(|l| l.len() < 3)
         .map(|l| {
-            if l.len() == 0 {
+            if l.is_empty() {
                 Item {cost: 0, dmg: 0, arm: 0}
             }
             else if l.len() == 2 {
@@ -97,7 +97,7 @@ struct Character {
 }
 
 impl Character {
-    fn from_input(input: &Vec<String>) -> Character {
+    fn from_input(input: &[String]) -> Character {
         let mut hp = 0;
         let mut dmg = 0;
         let mut arm = 0;
@@ -132,7 +132,7 @@ fn battle(mut player: Character, mut enemy: Character) -> bool {
     }
 }
 
-fn part1(input: &Vec<String>) -> u64 {
+fn part1(input: &[String]) -> u64 {
     let enemy = Character::from_input(input);
     let mut equips = iproduct!(WEAPONS.iter(), ARMOR.iter(), RINGS.iter())
         .map(|(a,b,c)| a + b + c)
@@ -147,7 +147,7 @@ fn part1(input: &Vec<String>) -> u64 {
         .cost
 }
 
-fn part2(input: &Vec<String>) -> u64 {
+fn part2(input: &[String]) -> u64 {
     let enemy = Character::from_input(input);
     let mut equips = iproduct!(WEAPONS.iter(), ARMOR.iter(), RINGS.iter())
         .map(|(a,b,c)| a + b + c)
@@ -176,7 +176,7 @@ mod tests {
     fn day21_test() {
         let p = Character { hp: 8, dmg: 5, arm: 5 };
         let e = Character { hp: 12, dmg: 7, arm: 2 };
-        assert_eq!(battle(p, e), true);
+        assert!(battle(p, e));
         //assert_eq!(part2(&input), 0);
     }
 }

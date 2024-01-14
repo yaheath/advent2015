@@ -39,7 +39,7 @@ fn escape(s: &str) -> String {
     out
 }
 
-fn part1(input: &Vec<String>) -> usize {
+fn part1(input: &[String]) -> usize {
     input.iter()
         .map(|s| {
             let (r, m) = countchars(s);
@@ -48,7 +48,7 @@ fn part1(input: &Vec<String>) -> usize {
         .sum()
 }
 
-fn part2(input: &Vec<String>) -> usize {
+fn part2(input: &[String]) -> usize {
     input.iter()
         .map(|s| escape(s).len() - s.len())
         .sum()

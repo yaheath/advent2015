@@ -20,7 +20,7 @@ impl FromStr for Input {
 
 fn brute_search<F>(
     from: String,
-    dists: &Vec<Input>,
+    dists: &[Input],
     sites: &HashSet<String>,
     visited: HashSet<String>,
     comp: &F,
@@ -43,7 +43,7 @@ where F: Fn(usize, usize) -> usize
     ans
 }
 
-fn doit(input: &Vec<Input>, ispart2: bool) -> usize {
+fn doit(input: &[Input], ispart2: bool) -> usize {
     let mut sites: HashSet<String> = HashSet::new();
     for i in input.iter() {
         sites.insert(i.a.clone());
@@ -56,11 +56,11 @@ fn doit(input: &Vec<Input>, ispart2: bool) -> usize {
         .unwrap()
 }
 
-fn part1(input: &Vec<Input>) -> usize {
+fn part1(input: &[Input]) -> usize {
     doit(input, false)
 }
 
-fn part2(input: &Vec<Input>) -> usize {
+fn part2(input: &[Input]) -> usize {
     doit(input, true)
 }
 

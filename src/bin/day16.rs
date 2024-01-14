@@ -42,7 +42,7 @@ fn analysis() -> HashMap::<String, usize> {
     ])
 }
 
-fn part1(input: &Vec<Sue>) -> usize {
+fn part1(input: &[Sue]) -> usize {
     let a = analysis();
     let candidates = input.iter()
         .filter(|s| s.has.iter()
@@ -54,7 +54,7 @@ fn part1(input: &Vec<Sue>) -> usize {
     candidates[0].num
 }
 
-fn part2(input: &Vec<Sue>) -> usize {
+fn part2(input: &[Sue]) -> usize {
     let a = analysis();
     let candidates = input.iter()
         .filter(|s| s.has.iter()

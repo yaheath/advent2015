@@ -2,22 +2,22 @@ use std::vec::Vec;
 use itertools::Itertools;
 use ya_advent_lib::read::read_input;
 
-fn fill(input: &Vec<usize>, total: usize) -> usize {
+fn fill(input: &[usize], total: usize) -> usize {
     input.iter()
         .powerset()
-        .filter(|v| v.len() > 0)
+        .filter(|v| !v.is_empty())
         .filter(|v| v.iter().fold(0, |acc, n| acc + **n) == total)
         .count()
 }
 
-fn part1(input: &Vec<usize>) -> usize {
+fn part1(input: &[usize]) -> usize {
     fill(input, 150)
 }
 
-fn fill2(input: &Vec<usize>, total: usize) -> usize {
+fn fill2(input: &[usize], total: usize) -> usize {
     input.iter()
         .powerset()
-        .filter(|v| v.len() > 0)
+        .filter(|v| !v.is_empty())
         .filter(|v| v.iter().fold(0, |acc, n| acc + **n) == total)
         .sorted_by_key(|v| v.len())
         .fold((0, 0), |acc, v|
@@ -32,7 +32,7 @@ fn fill2(input: &Vec<usize>, total: usize) -> usize {
         .0
 }
 
-fn part2(input: &Vec<usize>) -> usize {
+fn part2(input: &[usize]) -> usize {
     fill2(input, 150)
 }
 

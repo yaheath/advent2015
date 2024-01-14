@@ -1,12 +1,12 @@
 use std::vec::Vec;
 use ya_advent_lib::read::read_input;
 
-fn expand(s: String) -> String {
-    let mut itr = s.chars();
+fn expand(s: &str) -> String {
+    let itr = s.chars();
     let mut current = String::new();
     let mut out: String = String::new();
-    while let Some(c) = itr.next() {
-        if current.len() == 0 || current.chars().next().unwrap() == c {
+    for c in itr {
+        if current.is_empty() || current.chars().next().unwrap() == c {
             current.push(c);
         }
         else {
@@ -19,17 +19,17 @@ fn expand(s: String) -> String {
 }
 
 fn part1(input: &str) -> usize {
-    let mut s = input.into();
+    let mut s: String = input.into();
     for _ in 0..40 {
-        s = expand(s)
+        s = expand(&s)
     }
     s.len()
 }
 
 fn part2(input: &str) -> usize {
-    let mut s = input.into();
+    let mut s: String = input.into();
     for _ in 0..50 {
-        s = expand(s)
+        s = expand(&s)
     }
     s.len()
 }
@@ -46,10 +46,10 @@ mod tests {
 
     #[test]
     fn day10_test() {
-        assert_eq!(expand("1".into()), "11");
-        assert_eq!(expand("11".into()), "21");
-        assert_eq!(expand("21".into()), "1211");
-        assert_eq!(expand("1211".into()), "111221");
-        assert_eq!(expand("111221".into()), "312211");
+        assert_eq!(expand("1"), "11");
+        assert_eq!(expand("11"), "21");
+        assert_eq!(expand("21"), "1211");
+        assert_eq!(expand("1211"), "111221");
+        assert_eq!(expand("111221"), "312211");
     }
 }

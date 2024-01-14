@@ -53,7 +53,7 @@ impl CPU<char, u64, Instruction> for JanesCPU {
                 vm.set_reg(*r, n);
             },
             Instruction::Jmp(n) if *n < 0 => {
-                return InstructionResult::JumpBck(n.abs() as usize);
+                return InstructionResult::JumpBck(n.unsigned_abs() as usize);
             },
             Instruction::Jmp(n) => {
                 return InstructionResult::JumpFwd(*n as usize);
@@ -62,7 +62,7 @@ impl CPU<char, u64, Instruction> for JanesCPU {
                 let v = vm.get_reg(*r);
                 if v & 1 == 0 {
                     if *n < 0 {
-                        return InstructionResult::JumpBck(n.abs() as usize);
+                        return InstructionResult::JumpBck(n.unsigned_abs() as usize);
                     }
                     else {
                         return InstructionResult::JumpFwd(*n as usize);
@@ -73,7 +73,7 @@ impl CPU<char, u64, Instruction> for JanesCPU {
                 let v = vm.get_reg(*r);
                 if v == 1 {
                     if *n < 0 {
-                        return InstructionResult::JumpBck(n.abs() as usize);
+                        return InstructionResult::JumpBck(n.unsigned_abs() as usize);
                     }
                     else {
                         return InstructionResult::JumpFwd(*n as usize);
@@ -91,9 +91,9 @@ struct JanesVM {
 }
 
 impl JanesVM {
-    fn new(program: &Vec<Instruction>, a: u64) -> Self {
+    fn new(program: &[Instruction], a: u64) -> Self {
         let cpu = JanesCPU{};
-        let mut shell = VMShell::new(program.clone(), 0);
+        let mut shell = VMShell::new(program.to_owned(), 0);
         shell.vm.set_reg('a', a);
         Self { cpu, shell }
     }
@@ -102,13 +102,13 @@ impl JanesVM {
     }
 }
 
-fn part1(input: &Vec<Instruction>) -> u64 {
+fn part1(input: &[Instruction]) -> u64 {
     let mut vm = JanesVM::new(input, 0);
     vm.run();
     vm.shell.vm.get_reg('b')
 }
 
-fn part2(input: &Vec<Instruction>) -> u64 {
+fn part2(input: &[Instruction]) -> u64 {
     let mut vm = JanesVM::new(input, 1);
     vm.run();
     vm.shell.vm.get_reg('b')

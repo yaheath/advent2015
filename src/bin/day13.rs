@@ -22,7 +22,7 @@ impl FromStr for Input {
     }
 }
 
-fn find_dx(input: &Vec<Input>, a: &String, b: &String) -> i64 {
+fn find_dx(input: &[Input], a: &String, b: &String) -> i64 {
     if let Some(m) = input.iter()
         .find(|&i| i.name == *a && i.neighbor == *b) {
             m.change
@@ -31,7 +31,7 @@ fn find_dx(input: &Vec<Input>, a: &String, b: &String) -> i64 {
     }
 }
 
-fn calc(input: &Vec<Input>, first: &String) -> i64 {
+fn calc(input: &[Input], first: &String) -> i64 {
     let mut names: HashSet<String> = input.iter()
         .flat_map(|i| vec![i.name.clone(), i.neighbor.clone()])
         .collect();
@@ -40,7 +40,7 @@ fn calc(input: &Vec<Input>, first: &String) -> i64 {
         .permutations(names.len())
         .map(|list| {
             let mut v = list.clone();
-            v.push(&first);
+            v.push(first);
             v.iter()
                 .circular_tuple_windows()
                 .fold(0, |acc, (&a, &b)| acc + find_dx(input, a, b) + find_dx(input, b, a))
@@ -49,11 +49,11 @@ fn calc(input: &Vec<Input>, first: &String) -> i64 {
         .unwrap()
 }
 
-fn part1(input: &Vec<Input>) -> i64 {
+fn part1(input: &[Input]) -> i64 {
     calc(input, &input[0].name)
 }
 
-fn part2(input: &Vec<Input>) -> i64 {
+fn part2(input: &[Input]) -> i64 {
     calc(input, &String::from("me"))
 }
 

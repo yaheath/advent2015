@@ -5,13 +5,13 @@ use json::{parse, JsonValue};
 fn sumnums(json: &JsonValue, ispart2: bool) -> f64 {
     match json {
         JsonValue::Object(o) => {
-            if ispart2 && o.iter().find(|(_, &ref v)| {
+            if ispart2 && o.iter().any(|(_, v)| {
                 match v {
                     JsonValue::String(s) if s == "red" => true,
                     JsonValue::Short(s) if s == "red" => true,
                     _ => false,
                 }
-            }).is_some() {
+            }) {
                 0.0
             } else {
                 o.iter().map(|(_, v)| sumnums(v, ispart2)).sum()

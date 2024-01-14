@@ -51,7 +51,7 @@ fn mixtures(num_ingredients: usize, total_amt: i64) -> Vec<Vec<i64>> {
     out
 }
 
-fn optimize(input: &Vec<Input>, ispart2: bool) -> i64 {
+fn optimize(input: &[Input], ispart2: bool) -> i64 {
     let m = mixtures(input.len(), 100);
     //println!("{m:?}");
     m.iter()
@@ -79,11 +79,11 @@ fn optimize(input: &Vec<Input>, ispart2: bool) -> i64 {
         .unwrap()
 }
 
-fn part1(input: &Vec<Input>) -> i64 {
+fn part1(input: &[Input]) -> i64 {
     optimize(input, false)
 }
 
-fn part2(input: &Vec<Input>) -> i64 {
+fn part2(input: &[Input]) -> i64 {
     optimize(input, true)
 }
 
