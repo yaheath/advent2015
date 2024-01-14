@@ -1,26 +1,23 @@
 use std::vec::Vec;
 use advent_lib::read::read_input;
 
-fn part1(input: &str) -> usize {
-    for n in 1.. {
+fn mt_search(input: &str, goal: &str, start: usize) -> usize {
+    for n in start.. {
         let key = format!("{input}{n}");
         let hash = format!("{:x}", md5::compute(key.as_bytes()));
-        if hash.starts_with("00000") {
+        if hash.starts_with(goal) {
             return n;
         }
     }
     panic!();
 }
 
+fn part1(input: &str) -> usize {
+    mt_search(input, "00000", 1)
+}
+
 fn part2(input: &str, start: usize) -> usize {
-    for n in start.. {
-        let key = format!("{input}{n}");
-        let hash = format!("{:x}", md5::compute(key.as_bytes()));
-        if hash.starts_with("000000") {
-            return n;
-        }
-    }
-    panic!();
+    mt_search(input, "000000", start)
 }
 
 fn main() {
