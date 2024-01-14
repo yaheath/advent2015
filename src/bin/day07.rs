@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::str::FromStr;
 use std::vec::Vec;
-use advent_lib::read::read_input;
+use ya_advent_lib::read::read_input;
 
 #[derive(Clone)]
 enum Input {
@@ -57,9 +57,9 @@ impl FromStr for Input {
     }
 }
 
-fn process(input: &Vec<Input>) -> HashMap<String, u16> {
+fn process(input: &[Input]) -> HashMap<String, u16> {
     let mut wires:HashMap<String, u16> = HashMap::new();
-    let mut remaining: Vec<Input> = input.clone();
+    let mut remaining: Vec<Input> = input.to_owned();
 
     while remaining.len() > 0 {
         let rows = remaining.len();
@@ -142,18 +142,18 @@ fn process(input: &Vec<Input>) -> HashMap<String, u16> {
     wires
 }
 
-fn part1(input: &Vec<Input>) -> u16 {
+fn part1(input: &[Input]) -> u16 {
     let wires = process(input);
     wires["a"]
 }
 
-fn part2(input: &Vec<Input>, a: u16) -> u16 {
+fn part2(input: &[Input], a: u16) -> u16 {
     let updated = input.iter()
         .map(|i| match i {
             Input::AssignImmed(_, w) if (w == "b") => Input::AssignImmed(a, "b".into()),
             _ => i.clone(),
         })
-        .collect();
+        .collect::<Vec<Input>>();
     let wires = process(&updated);
     wires["a"]
 }
@@ -168,7 +168,7 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use advent_lib::read::test_input;
+    use ya_advent_lib::read::test_input;
 
     #[test]
     fn day07_test() {

@@ -2,7 +2,7 @@ use std::str::FromStr;
 use std::vec::Vec;
 use lazy_static::lazy_static;
 use regex::Regex;
-use advent_lib::read::read_input;
+use ya_advent_lib::read::read_input;
 
 struct Input {
     row: usize,

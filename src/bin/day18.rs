@@ -1,7 +1,7 @@
 use std::vec::Vec;
-use advent_lib::read::read_input;
-use advent_lib::coords::Coord2D;
-use advent_lib::grid::Grid;
+use ya_advent_lib::read::read_input;
+use ya_advent_lib::coords::Coord2D;
+use ya_advent_lib::grid::Grid;
 
 #[derive(Copy, Clone, Eq, PartialEq)]
 enum Cell {
@@ -9,6 +9,16 @@ enum Cell {
     Off,
     OnNext,
     OffNext,
+}
+
+impl From<char> for Cell {
+    fn from(c: char) -> Self {
+        match c {
+            '.' => Cell::Off,
+            '#' => Cell::On,
+            _ => panic!(),
+        }
+    }
 }
 
 fn step(grid: &mut Grid<Cell>, part2: bool) {
@@ -47,7 +57,7 @@ fn step(grid: &mut Grid<Cell>, part2: bool) {
     }
 }
 
-fn run(input: &Vec<String>, nsteps: usize, part2: bool) -> usize {
+fn run(input: &[String], nsteps: usize, part2: bool) -> usize {
     let mut grid = mkgrid(input);
     if part2 {
         let w = grid.x_bounds().end;
@@ -63,19 +73,15 @@ fn run(input: &Vec<String>, nsteps: usize, part2: bool) -> usize {
     grid.iter().filter(|&&c| c == Cell::On).count()
 }
 
-fn mkgrid(input: &Vec<String>) -> Grid<Cell> {
-    Grid::from_input(input, Cell::Off, 0, |c| match c {
-        '.' => Cell::Off,
-        '#' => Cell::On,
-        _ => panic!(),
-    })
+fn mkgrid(input: &[String]) -> Grid<Cell> {
+    Grid::from_input(input, Cell::Off, 0)
 }
 
-fn part1(input: &Vec<String>) -> usize {
+fn part1(input: &[String]) -> usize {
     run(input, 100, false)
 }
 
-fn part2(input: &Vec<String>) -> usize {
+fn part2(input: &[String]) -> usize {
     run(input, 100, true)
 }
 
@@ -88,7 +94,7 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use advent_lib::read::test_input;
+    use ya_advent_lib::read::test_input;
 
     #[test]
     fn day18_test() {

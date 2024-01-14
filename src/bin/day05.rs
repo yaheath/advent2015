@@ -3,7 +3,7 @@ use std::vec::Vec;
 use lazy_static::lazy_static;
 use itertools::Itertools;
 use regex::Regex;
-use advent_lib::read::read_input;
+use ya_advent_lib::read::read_input;
 
 lazy_static! {
   static ref BAD_RE: Regex = Regex::new(
@@ -52,13 +52,13 @@ fn is_nice2(s: &str) -> bool {
     false
 }
 
-fn part1(input: &Vec<String>) -> usize {
+fn part1(input: &[String]) -> usize {
     input.iter()
         .filter(|s| is_nice1(s))
         .count()
 }
 
-fn part2(input: &Vec<String>) -> usize {
+fn part2(input: &[String]) -> usize {
     input.iter()
         .filter(|s| is_nice2(s))
         .count()

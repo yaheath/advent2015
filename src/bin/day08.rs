@@ -1,5 +1,5 @@
 use std::vec::Vec;
-use advent_lib::read::read_input;
+use ya_advent_lib::read::read_input;
 
 fn countchars(s: &str) -> (usize, usize) {
     let mut itr = s.chars();
@@ -64,7 +64,7 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use advent_lib::read::test_input;
+    use ya_advent_lib::read::test_input;
 
     #[test]
     fn day08_test() {

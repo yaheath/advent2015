@@ -1,7 +1,7 @@
 use std::cmp::{Ordering};
 use std::collections::BinaryHeap;
 use std::vec::Vec;
-use advent_lib::read::read_input;
+use ya_advent_lib::read::read_input;
 
 #[derive(Clone, Eq, PartialEq, Debug)]
 struct Enemy {

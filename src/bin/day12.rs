@@ -1,5 +1,5 @@
 use std::vec::Vec;
-use advent_lib::read::read_input;
+use ya_advent_lib::read::read_input;
 use json::{parse, JsonValue};
 
 fn sumnums(json: &JsonValue, ispart2: bool) -> f64 {

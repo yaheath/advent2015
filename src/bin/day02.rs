@@ -1,6 +1,6 @@
 use std::str::FromStr;
 use std::vec::Vec;
-use advent_lib::read::read_input;
+use ya_advent_lib::read::read_input;
 
 struct Gift {
     l: usize,
@@ -30,11 +30,11 @@ impl FromStr for Gift {
     }
 }
 
-fn part1(input: &Vec<Gift>) -> usize {
+fn part1(input: &[Gift]) -> usize {
     input.iter().fold(0, |a, g| a + g.wp_area())
 }
 
-fn part2(input: &Vec<Gift>) -> usize {
+fn part2(input: &[Gift]) -> usize {
     input.iter().fold(0, |r, g| r + g.ribbon())
 }
 
@@ -47,7 +47,7 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use advent_lib::read::test_input;
+    use ya_advent_lib::read::test_input;
 
     #[test]
     fn day02() {

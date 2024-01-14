@@ -1,6 +1,6 @@
 use std::vec::Vec;
 use itertools::Itertools;
-use advent_lib::read::read_input;
+use ya_advent_lib::read::read_input;
 
 fn fill(input: &Vec<usize>, total: usize) -> usize {
     input.iter()
@@ -45,7 +45,7 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use advent_lib::read::test_input;
+    use ya_advent_lib::read::test_input;
 
     #[test]
     fn day17_test() {

@@ -1,8 +1,8 @@
 use std::str::FromStr;
 use std::vec::Vec;
-use advent_lib::read::read_input;
-use advent_lib::coords::Coord2D;
-use advent_lib::grid::Grid;
+use ya_advent_lib::read::read_input;
+use ya_advent_lib::coords::Coord2D;
+use ya_advent_lib::grid::Grid;
 
 #[derive(Copy, Clone, Eq, PartialEq)]
 enum Action {
@@ -40,7 +40,7 @@ impl FromStr for Input {
     }
 }
 
-fn part1(input: &Vec<Input>) -> usize {
+fn part1(input: &[Input]) -> usize {
     let mut grid: Grid<bool> = Grid::new(0, 0, 999, 999, false);
     for inst in input {
         for y in inst.corner1.y ..= inst.corner2.y {
@@ -57,7 +57,7 @@ fn part1(input: &Vec<Input>) -> usize {
     grid.iter().filter(|v| **v).count()
 }
 
-fn part2(input: &Vec<Input>) -> usize {
+fn part2(input: &[Input]) -> usize {
     let mut grid: Grid<usize> = Grid::new(0, 0, 999, 999, 0);
     for inst in input {
         for y in inst.corner1.y ..= inst.corner2.y {
@@ -84,7 +84,7 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use advent_lib::read::test_input;
+    use ya_advent_lib::read::test_input;
 
     #[test]
     fn day06_test() {

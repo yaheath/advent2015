@@ -1,5 +1,5 @@
 use std::vec::Vec;
-use advent_lib::read::read_input;
+use ya_advent_lib::read::read_input;
 
 fn part1(input: &str) -> i64 {
     input.chars()

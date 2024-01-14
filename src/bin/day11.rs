@@ -1,6 +1,6 @@
 use std::vec::Vec;
 use itertools::Itertools;
-use advent_lib::read::read_input;
+use ya_advent_lib::read::read_input;
 
 fn increment(pass: &mut Vec<char> ) {
     let mut i = pass.len();

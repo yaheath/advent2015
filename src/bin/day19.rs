@@ -3,7 +3,7 @@ use std::vec::Vec;
 use itertools::Itertools;
 use rand::thread_rng;
 use rand::seq::SliceRandom;
-use advent_lib::read::read_sectioned_input;
+use ya_advent_lib::read::read_sectioned_input;
 
 #[derive(Clone)]
 struct Rep {
@@ -83,7 +83,7 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use advent_lib::read::sectioned_test_input;
+    use ya_advent_lib::read::sectioned_test_input;
 
     #[test]
     fn day19_test() {

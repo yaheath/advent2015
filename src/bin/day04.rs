@@ -1,5 +1,5 @@
 use std::vec::Vec;
-use advent_lib::read::read_input;
+use ya_advent_lib::read::read_input;
 
 fn mt_search(input: &str, goal: &str, start: usize) -> usize {
     for n in start.. {

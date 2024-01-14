@@ -1,7 +1,7 @@
 use std::collections::HashSet;
 use std::vec::Vec;
 use itertools::Itertools;
-use advent_lib::read::read_input;
+use ya_advent_lib::read::read_input;
 
 fn part1(input: &Vec<u64>) -> u64 {
     let all: HashSet<u64> = HashSet::from_iter(input.iter().copied());
@@ -73,7 +73,7 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use advent_lib::read::test_input;
+    use ya_advent_lib::read::test_input;
 
     #[test]
     fn day24_test() {

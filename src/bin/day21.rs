@@ -3,7 +3,7 @@ use std::ops::Add;
 use std::vec::Vec;
 use itertools::{Itertools, iproduct};
 use lazy_static::lazy_static;
-use advent_lib::read::read_input;
+use ya_advent_lib::read::read_input;
 
 #[derive(Clone)]
 struct Item {
